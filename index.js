@@ -1,4 +1,3 @@
-// $(document).ready(function () {
 let selectedItems = [];
 let chipBtns;
 let selectedChipBtns;
@@ -34,10 +33,26 @@ function addToSelectedItem(ele) {
 
     initChipBtns();
     for (let i = 0; i < chipBtns.length; i++) {
+        let left = $(chipBtns[i]).css('left');
+        left = left.substring(0, left.length - 2);
+        let top = $(chipBtns[i]).css('top');
+        top = top.substring(0, top.length - 2);
+        let chiPos = {
+            left: +left,
+            top: +top
+        }
         $(chipBtns[i]).addClass('position-absolute');
-        $(chipBtns[i]).animate({
-            left: '-' + ($(ele).width() - 30 - 12 - 3) + 'px'
-        }, 500);
+        if (chiPos.left > pos.left && chiPos.top === pos.top) {
+            $(chipBtns[i]).animate({
+                left: '-=' + ($(ele).width() + 30) + 'px'
+            }, 500);
+        }
+        // else if (chiPos.top > pos.top && chiPos.left < pos.left) {
+        //     $(chipBtns[i]).animate({
+        //         top: '-=' + ($(ele).height()) + 'px',
+        //         right: '+=' + ($(ele).width() + 30) + 'px'
+        //     }, 500);
+        // }
     }
 
     $(ele).addClass('position-absolute');
@@ -51,14 +66,6 @@ function addToSelectedItem(ele) {
     if (selectedItems.length === 0) {
         helpLabel.innerHTML = '&nbsp;';
     }
-    // selectedItems.push(value);
-    // let newSelectedChip = getNewSelectedChipBtn();
-    // newSelectedChip.setAttribute('value', value);
-    // newSelectedChip.innerHTML = value;
-    // selectedChipContainer.appendChild(newSelectedChip);
-    // initSelectedChipBtns();
-    // ele.classList.add('fadeOut');
-    // chipCotainer.removeChild(ele)
 }
 
 function removeFromSelectedItem(ele) {
@@ -89,4 +96,3 @@ function getNewChipBtn() {
     chipBtn.className += 'btn btn-primary mb-3 chip-btn animated fadeIn';
     return chipBtn;
 }
-// });
