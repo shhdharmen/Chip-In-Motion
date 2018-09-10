@@ -1,16 +1,17 @@
 @keyframes move-selected {
     to {
-        top: 14px;
-        left: 11px;
+        top: 20px;
+        left: 12px;
     }
 }
 
 .move-selected {
-    top: 74px;
-    left: 11px;
     animation-name: move-selected;
     animation-duration: 0.5s;
     animation-fill-mode: forwards;
-    animation-timing-function: ease;
-    animation-delay: 1s;
+    animation-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+div.selected-chip-container{
+    min-height: 24px;
 }
