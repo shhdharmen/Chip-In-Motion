@@ -1,17 +1,42 @@
-@keyframes move-selected {
-    to {
-        top: 20px;
-        left: 12px;
+@keyframes merge-chip {
+    90% {
+        color: #007bff;
+        opacity: 1;
+    }
+    100% {
+        color: #007bff;
+        opacity: 0;
     }
 }
 
-.move-selected {
-    animation-name: move-selected;
-    animation-duration: 0.5s;
-    animation-fill-mode: forwards;
-    animation-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
+@keyframes counter-chip {
+    0% {
+        width: auto;
+        color: #fff;
+    }
+    100% {
+        width: '50px';
+        color: #007bff;
+    }
 }
 
-div.selected-chip-container{
+div.selected-chip-container {
     min-height: 24px;
+}
+
+.chip {
+    border-radius: 19px;
+}
+
+.merging-chip {
+    animation-name: merge-chip;
+    animation-duration: 750ms;
+    animation-fill-mode: forwards;
+}
+
+.counter-chip {
+    animation-name: counter-chip;
+    animation-duration: 150ms;
+    animation-direction: alternate;
+    animation-timing-function: cubic-bezier();
 }
